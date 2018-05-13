@@ -70,7 +70,6 @@ const argv = yargs
  */
 // const ignoreFilePath = path.resolve('.watch-ignore')
 const watch = (p, i, d, t) => {
-  console.log('t ', t)
   let ignoreFile
   let ignoreList = []
   try {
@@ -85,7 +84,7 @@ const watch = (p, i, d, t) => {
   }
   // 将命令行 ignore 参数也加到屏蔽列表里
   ignoreList = ignoreList.concat(i.filter(res => !!res))
-  console.log('ignoreList ', ignoreList)
+  console.log('黑名单：', ignoreList)
   // 监听配置
   const watcher = chokidar.watch(p, {
       ignored: ignoreList, // 不监听的文件列表
@@ -103,15 +102,8 @@ const watch = (p, i, d, t) => {
       if (stats) {
         console.log('修改时间：', new Date(stats.ctime).toLocaleString())
       }
+      console.log('------------------------------------')
     })
-}
-
-const watchFile = path => {
-  console.log('watchFile', path)
-}
-
-const watchDirectory = path => {
-  console.log('watchDirectory', path)
 }
 
 const fsStat = fs.stat(argv.p, (err, stats) => {
@@ -120,6 +112,3 @@ const fsStat = fs.stat(argv.p, (err, stats) => {
   // if (stats.isDirectory()) watchDirectory(argv.p)
   watch(argv.p, argv.i, argv.d, argv.t)
 })
-
-// console.log('shell', shell)
-// shell.echo('fsStat ' + fsStat)
