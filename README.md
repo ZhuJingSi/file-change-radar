@@ -1,5 +1,9 @@
 利用 Node js 写的一个对文件或目录的扫描文件修改，一旦修改抛出系统提示。
 
+### native-api、use-chokidar
+
+native-api、use-chokidar 两个目录实现的功能是一样的，实现方式不一样，一个用 node 原生 api，一个用 chokidar 库。native-api 的提示使用 `osascript` 桌面通知。
+
 ### Getting started
 
 1.  下载这个包
